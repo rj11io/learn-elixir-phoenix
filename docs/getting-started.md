@@ -91,3 +91,9 @@ docker pull postgres
 
 docker run -d -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 --name my_postgres_container postgres
 ```
+
+### 3. Create a new Phoenix application
+To create a new Phoenix application, run:
+```
+mix phx.new my_app
+```
