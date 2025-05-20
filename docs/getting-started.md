@@ -26,6 +26,10 @@ __Elixir Tools and Binaries__ - The Elixir installation includes the following c
 - `mix`: Elixir’s build tool for managing projects, dependencies, and tasks.
 
 These are installed in the system’s binary path (e.g., /usr/local/bin or /opt/homebrew/bin for Apple Silicon). Run `brew deps elixir` to see the full list of Homebrew dependencies.
+<!-- 
+??__Documentation and Standard Library__: ??
+- Elixir’s standard library and documentation are included in the installation.
+- You can access documentation via `mix docs` (to generate project docs) or `h` in the `iex` shell for module/function help. -->
 
 __Hex Package Manager__:
 - While not installed automatically, `mix` (included with Elixir) can install Hex, the package manager for Elixir, the first time you run the command `mix local.hex`
@@ -85,6 +89,21 @@ psql --version
 ```
 Phoenix assumes that your PostgreSQL installation has a user named `postgres` with a password of `postgres`.
 
+To spin up a PostgreSQL server using Homebrew, run the following command:
+```
+brew services start postgresql
+```
+
+Check the status of the PostgreSQL service:
+```
+brew services list | grep postgresql
+```
+
+Stop it with the command:
+```
+brew services stop postgresql
+```
+
 If you prefer to use Docker, it's easy to spin up a PostgreSQL container:
 ```
 docker pull postgres
@@ -96,4 +115,24 @@ docker run -d -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:54
 To create a new Phoenix application, run:
 ```
 mix phx.new my_app
+```
+
+Now navigate into the generated application directory:
+```
+cd my_app
+```
+
+<!-- Start your PostgresSQL service `brew services start postgresql` -->
+
+Then configure your database in config/dev.exs and run:
+```
+mix ecto.create
+```
+Start your Phoenix app with:
+```
+mix phx.server
+```
+You can also run your app inside IEx (Interactive Elixir) as:
+```
+iex -S mix phx.server
 ```
