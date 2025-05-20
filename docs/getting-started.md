@@ -122,7 +122,7 @@ Now navigate into the generated application directory:
 cd my_app
 ```
 
-<!-- Start your PostgresSQL service `brew services start postgresql` -->
+Start your PostgresSQL service/docker
 
 Then configure your database in config/dev.exs and run:
 ```
